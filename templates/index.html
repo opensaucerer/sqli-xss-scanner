@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Injection Scanner</title>
+  </head>
+  <body>
+    <h1>Error-Based SQL Injection Scanner</h1>
+
+    <form method="POST" action="/">
+      <div>
+        {{ form.csrf_token }} {{ form.url.label }} {{ form.url }}
+      </div>
+      <input type="submit" value="SCAN" />
+    </form>
+  </body>
+</html>
