@@ -64,22 +64,22 @@ def is_vulnerable(first):
     # # no error detected
     # return False
     if 'mysql' in first.text.lower():
-        error_msg = '[!] Injectable MySQL detected'
+        error_msg = '[!] Injectable MySQL DB detected'
         print(error_msg)
         logs.append(error_msg)
         return True
     elif 'native client' in first.text.lower():
-        error_msg = '[!] Injectable MSSQL detected'
+        error_msg = '[!] Injectable MSSQL DB detected'
         print(error_msg)
         logs.append(error_msg)
         return True
     elif 'syntax error' in first.text.lower():
-        error_msg = '[!] Injectable PostGRES detected'
+        error_msg = '[!] Injectable PostGRES DB detected'
         print(error_msg)
         logs.append(error_msg)
         return True
     elif 'ORA' in first.text.lower():
-        error_msg = '[!] Injectable Oracle detected'
+        error_msg = '[!] Injectable Oracle DB detected'
         print(error_msg)
         logs.append(error_msg)
         return True
