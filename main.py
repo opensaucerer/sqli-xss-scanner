@@ -32,10 +32,8 @@ def home():
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():
-    log = []
-    log.append(logs)
 
-    return render_template("report.html", test_logs=logs), logs.clear()
+    return render_template("report.html", test_logs=logs, forms=form_list), logs.clear(), form_list.clear()
 
 
 if __name__ == "__main__":

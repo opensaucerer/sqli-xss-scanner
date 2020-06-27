@@ -84,14 +84,20 @@ def is_vulnerable(first):
         logs.append(error_msg)
         return True
     elif 'expects' in first.text.lower():
-        error_msg = '[!] Injection Successful\n[!] Unknown Injectable Database Detected'
+        error_msg = '[!] Injection Successful: DB Unknown'
+
+        # \n[!] Unknown Injectable Database Detected'
         print(error_msg)
         logs.append(error_msg)
         return True
     else:
-        error_msg = '[+] Error-Based Injection Failed to Indentify DB\n[!] Blind Injection Possible'
+        error_msg = '[+] Unsuccessful Error-Based Injection'
+        error_msg1 = '[+] Endpoint Parameter not Dynamic or Redirect Occured'
+        # \n[!] Blind Injection Possible'
         print(error_msg)
+        print(error_msg1)
         logs.append(error_msg)
+        logs.append(error_msg1)
         return False
 
 
@@ -99,11 +105,12 @@ def scan_sql_injection(url):
     # test on URL
     for c in f"\'":
         # add quote/double quote character to the URL
-        new_url = f"{url}{c}"
-        print(new_url)
-        logs.append(new_url)
+        new_url = f'{url}{c}'
+        starting = f"[+] Error Based Injection Started"
+        print(starting)
+        logs.append(starting)
         # print("[!] Trying", new_url)
-        try_log = "[!] Trying " + new_url
+        try_log = "[+] Trying " + new_url
         print(try_log)
         logs.append(try_log)
         # make the HTTP request
@@ -113,7 +120,7 @@ def scan_sql_injection(url):
             # SQL Injection detected on the URL itself,
             # no need to preceed for extracting forms and submitting them
             # print("[+] SQL Injection vulnerability detected, link:", new_url)
-            detected_log = "[+] SQL Injection vulnerability detected, link: " + new_url
+            detected_log = "[!] SQL Injection vulnerability detected, link: " + new_url
             print(detected_log)
             logs.append(detected_log)
 
@@ -122,8 +129,11 @@ def scan_sql_injection(url):
     # test on HTML forms
     forms = get_all_forms(url)
     form_length = f"[+] Detected {len(forms)} forms on {url}"
+    form_try = '[+] Initiating Error Based Injection Through Detected Forms'
     print(form_length)
+    print(form_try)
     logs.append(form_length)
+    logs.append(form_try)
     for form in forms:
         form_details = get_form_details(form)
         for c in "\"'":
@@ -148,7 +158,7 @@ def scan_sql_injection(url):
                 res = s.get(url, params=data)
             # test whether the resulting page is vulnerable
             if is_vulnerable(res):
-                form_detect = "[+] SQL Injection vulnerability detected, link: " + url
+                form_detect = "[!] SQL Injection vulnerability detected, link: " + url
                 print(form_detect)
                 logs.append(form_detect)
                 form_detected = "[+] Form: "
