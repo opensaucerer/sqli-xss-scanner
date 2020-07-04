@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    color: black;
+    background-color: rgba(128, 128, 128, 0.342);
+    font-family: 'Ubuntu',
+        sans-serif;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 900;
+}
+
+span {
+    font-weight: initial;
+    color: black;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+}
+
+
+
+h1 {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-decoration: underline;
+    -webkit-text-stroke: 1px;
+    color: black;
+    -webkit-text-fill-color: rgba(128, 128, 128, 0.342);
+}
+
+p {
+    margin-left: 20px;
+    word-wrap: break-word;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: black;
+    font-size: 1rem;
+    max-width: 400px;
+    /* word-wrap: break-word; */
+
+}
+
+
+.scan-details1:hover {
+    color: rgba(13, 89, 231, 0.76);
+
+}
+
+.scan-details1 {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgba(0, 0, 255, 0.904);
+}
+
+.payloads-tried,
+.scan-details {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgba(0, 0, 255, 0.904);
+}
+
+.payloads-tried:hover,
+.scan-details:hover {
+    color: rgba(13, 89, 231, 0.76);
+
+}
+
+
+
+.scan-logs,
+.payloads,
+.test-logs {
+    visibility: hidden;
+
+}

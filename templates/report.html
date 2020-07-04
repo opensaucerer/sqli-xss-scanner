@@ -3,18 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/report.css" />
+    <script src="../static/js/report.js" defer></script>
     <title>Scan Report</title>
   </head>
   <body>
-    <h1>Error-Based Vulnerability Scan Result</h1>
 
-    {% for test_log in test_logs %}
-    <p>{{ test_log }}</p>
+    
+    <h1>Vulnerability Scan Result</h1>
+
+    <section>
+      <div class="sql">
+      <h3>SQL Injection Scan</h3>
+
+    {% for type in sqli_type %}
+    <p class="label">Scan Type: <span>{{ type }}</span></p>
+    {% endfor %} {% for detected in sqli_detected %}
+    <p class="label">SQLi Detected: <span>{{ detected }}</span></p>
+    {% endfor %} {% for level in risk_state %}
+    <p class="label">Risk Level: <span class="risk">{{ level }}</<span></p>
+    {% endfor %}
+    {% for d in db %}
+    <p class="label">Database Detected: <span>{{ d }}</<span></p>
     {% endfor %}
     <br />
 
-    {% for form in forms %}
-    <p>{{ form }}</p>
+
+    <p class="scan-details1">Scan Details</p>
+    {% for test_log in test_logs %}
+    <p class="test-logs">{{ test_log }}</p>
     {% endfor %}
+    <br />
+    </div>
+    
+
+    <div class="xss">
+
+       <h3>Cross-Site Scripting Scan</h3>
+    {% for type in xss_type %}
+    <p class="label">Scan Type: <span>{{ type }}</span></p>
+    {% endfor %} {% for detected in xss_detected %}
+    <p class="label">XSS Detected: <span>{{ detected }}</span></p>
+    {% endfor %} {% for level in risk_level %}
+    <p class="label">Risk Level: <span class="risk risky">{{ level }}</<span></p>
+    {% endfor %}
+    {% for d in db %}
+    <p class="label"></<span></p>
+    {% endfor %}
+    <br />
+
+    <p class="scan-details">Scan Details</p>
+    {% for scan_log in scan_logs %}
+    <p class="scan-logs">{{ scan_log }}</p>
+    {% endfor %}
+    <br />
+
+    <p class="payloads-tried">Payloads Tried</p>
+    {% for payload in payloads_tried %}
+    <p class="payloads">{{ payload }}</p>
+    {% endfor %}
+
+    </div>
+    </section>
+
+
+    
+   
   </body>
 </html>

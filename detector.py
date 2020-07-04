@@ -10,6 +10,10 @@ s.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit
 
 logs = []
 form_list = []
+db = []
+sqli_detected = []
+sqli_type = ['Error-Based SQL Injection']
+risk_state = []
 
 
 def get_all_forms(url):
@@ -46,56 +50,56 @@ def get_form_details(form):
 
 
 def is_vulnerable(first):
-    # """A simple boolean function that determines whether a page
-    # is SQL Injection vulnerable from its `response`"""
-    # errors = {
-    #     # MySQL
-    #     "you have an error in your sql syntax;",
-    #     "warning: mysql",
-    #     # SQL Server
-    #     "unclosed quotation mark after the character string",
-    #     # Oracle
-    #     "quoted string not properly terminated",
-    # }
-    # for error in errors:
-    #     # if you find one of these errors, return True
-    #     if error in response.content.decode().lower():
-    #         return True
-    # # no error detected
-    # return False
+    # """A simple boolean function that determines whether a page is SQL Injection vulnerable from its `response`"""
+
     if 'mysql' in first.text.lower():
         error_msg = '[!] Injectable MySQL DB detected'
         print(error_msg)
         logs.append(error_msg)
+        sqli_detected.append("True")
+        risk_state.append("High")
+        db.append("MySQL")
         return True
     elif 'native client' in first.text.lower():
         error_msg = '[!] Injectable MSSQL DB detected'
         print(error_msg)
         logs.append(error_msg)
+        sqli_detected.append("True")
+        risk_state.append("High")
+        db.append("MSSQL")
         return True
     elif 'syntax error' in first.text.lower():
         error_msg = '[!] Injectable PostGRES DB detected'
         print(error_msg)
         logs.append(error_msg)
+        db.append("PostGRESSQL")
+        risk_state.append("High")
+        sqli_detected.append("True")
         return True
     elif 'ORA' in first.text.lower():
         error_msg = '[!] Injectable Oracle DB detected'
         print(error_msg)
         logs.append(error_msg)
+        db.append("Oracle DB")
+        risk_state.append("High")
+        sqli_detected.append("True")
         return True
     elif 'expects' in first.text.lower():
         error_msg = '[!] Injection Successful: DB Unknown'
-
-        # \n[!] Unknown Injectable Database Detected'
         print(error_msg)
+        sqli_detected.append("True")
+        risk_state.append("High")
         logs.append(error_msg)
+        db.append("Unknown")
         return True
     else:
         error_msg = '[+] Unsuccessful Error-Based Injection'
         error_msg1 = '[+] Endpoint Parameter not Dynamic or Redirect Occured'
         # \n[!] Blind Injection Possible'
         print(error_msg)
+        risk_state.append("Low")
         print(error_msg1)
+        sqli_detected.append("False")
         logs.append(error_msg)
         logs.append(error_msg1)
         return False
@@ -119,7 +123,7 @@ def scan_sql_injection(url):
         if is_vulnerable(res):
             # SQL Injection detected on the URL itself,
             # no need to preceed for extracting forms and submitting them
-            # print("[+] SQL Injection vulnerability detected, link:", new_url)
+
             detected_log = "[!] SQL Injection vulnerability detected, link: " + new_url
             print(detected_log)
             logs.append(detected_log)
@@ -161,6 +165,10 @@ def scan_sql_injection(url):
                 form_detect = "[!] SQL Injection vulnerability detected, link: " + url
                 print(form_detect)
                 logs.append(form_detect)
+                sqli_detected.clear()
+                sqli_detected.append("True")
+                risk_state.clear()
+                risk_state.append("High")
                 form_detected = "[+] Form: "
                 print(form_detected)
                 logs.append(form_detected)
@@ -173,7 +181,7 @@ def scan_sql_injection(url):
 
 # if __name__ == "__main__":
     # import sys
-# url = sys.argv[1]
-# url = input("URL:  ")
-
-# scan_sql_injection(url)
+    # url = sys.argv[1]
+    # url = input("URL:  ")
+# scan_sql_injection('http://testphp.vulnweb.com/listproducts.php?cat=1')
+# print(db, sqli_detected, risk_state, logs, sqli_type)
