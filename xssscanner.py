@@ -12,7 +12,6 @@ scan_logs = []
 xss_type = ["Reflected Cross-Site Scripting"]
 risk_level = []
 forms_found = []
-risk_check = False
 
 
 def get_all_forms(url):
@@ -117,7 +116,7 @@ def xss_scanner(url):
             if payload in response_content:
                 log3 = f"[!] XSS Detected on {url}"
                 scan_logs.append(log3)
-                risk_check = True
+
                 print(log3)
 
                 forms1 = f"[*] Form details:"
@@ -137,18 +136,20 @@ def xss_scanner(url):
             else:
                 log5 = f"[+] XSS Not Successful Through Forms on {url}"
                 scan_logs.append(log5)
+
                 print(log5)
 
             if pay.index(x) < len(pay) - 1:
                 log6 = f"[*] Trying Next Payload"
                 print(log6)
-    if risk_check:
-        risk_level.append("High")
-    else:
-        risk_level.append("Low")
 
         # won't break because we want to print other available vulnerable forms
     xss_detected.append(is_vulnerable)
+    if is_vulnerable:
+        risk_level.append("High")
+    else:
+        risk_level.clear()
+        risk_level.append("Low")
     log6 = f"XSS Test Complete"
     scan_logs.append(log6)
     return print(log6)
@@ -158,4 +159,6 @@ def xss_scanner(url):
 
     # url = "https://www.studiopiranha.com/stel-een-vraag/"
     # url = "http://testphp.vulnweb.com/listproducts.php?cat=1"
-    # xss_scanner("http://testphp.vulnweb.com/listproducts.php?cat=1")
+# xss_scanner(
+#     "http://www.webscantest.com/datastore/search_get_by_name.php?name=Rake")
+# print(xss_detected, risk_level, scan_logs, xss_type, payloads_tried)

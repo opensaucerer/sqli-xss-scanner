@@ -98,6 +98,7 @@ def is_vulnerable(first):
         # \n[!] Blind Injection Possible'
         print(error_msg)
         risk_state.append("Low")
+        db.append("Unknown")
         print(error_msg1)
         sqli_detected.append("False")
         logs.append(error_msg)
@@ -174,6 +175,13 @@ def scan_sql_injection(url):
                 logs.append(form_detected)
                 pprint(form_details)
                 form_list.append(form_details)
+            else:
+                sqli_detected.clear()
+                sqli_detected.append("False")
+                db.clear()
+                db.append("Unknown")
+                risk_state.clear()
+                risk_state.append("Low")
 
                 # print(logs)
                 break
@@ -183,5 +191,6 @@ def scan_sql_injection(url):
     # import sys
     # url = sys.argv[1]
     # url = input("URL:  ")
-# scan_sql_injection('http://testphp.vulnweb.com/listproducts.php?cat=1')
+# scan_sql_injection(
+#     'http://www.webscantest.com/datastore/search_get_by_name.php?name=Rake')
 # print(db, sqli_detected, risk_state, logs, sqli_type)
