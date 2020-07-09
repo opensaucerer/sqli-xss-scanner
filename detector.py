@@ -58,6 +58,7 @@ def is_vulnerable(first):
         logs.append(error_msg)
         sqli_detected.append("True")
         risk_state.append("High")
+        db.clear()
         db.append("MySQL")
         return True
     elif 'native client' in first.text.lower():
@@ -66,12 +67,14 @@ def is_vulnerable(first):
         logs.append(error_msg)
         sqli_detected.append("True")
         risk_state.append("High")
+        db.clear()
         db.append("MSSQL")
         return True
     elif 'syntax error' in first.text.lower():
         error_msg = '[!] Injectable PostGRES DB detected'
         print(error_msg)
         logs.append(error_msg)
+        db.clear()
         db.append("PostGRESSQL")
         risk_state.append("High")
         sqli_detected.append("True")
@@ -80,6 +83,7 @@ def is_vulnerable(first):
         error_msg = '[!] Injectable Oracle DB detected'
         print(error_msg)
         logs.append(error_msg)
+        db.clear()
         db.append("Oracle DB")
         risk_state.append("High")
         sqli_detected.append("True")
@@ -90,6 +94,7 @@ def is_vulnerable(first):
         sqli_detected.append("True")
         risk_state.append("High")
         logs.append(error_msg)
+        db.clear()
         db.append("Unknown")
         return True
     else:
@@ -98,6 +103,7 @@ def is_vulnerable(first):
         # \n[!] Blind Injection Possible'
         print(error_msg)
         risk_state.append("Low")
+        db.clear()
         db.append("Unknown")
         print(error_msg1)
         sqli_detected.append("False")
@@ -191,6 +197,6 @@ def scan_sql_injection(url):
     # import sys
     # url = sys.argv[1]
     # url = input("URL:  ")
-# scan_sql_injection(
-#     'http://www.webscantest.com/datastore/search_get_by_name.php?name=Rake')
-# print(db, sqli_detected, risk_state, logs, sqli_type)
+scan_sql_injection(
+    'http://www.webscantest.com/datastore/search_by_id.php')
+print(db)
