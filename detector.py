@@ -197,6 +197,6 @@ def scan_sql_injection(url):
     # import sys
     # url = sys.argv[1]
     # url = input("URL:  ")
-scan_sql_injection(
-    'http://www.webscantest.com/datastore/search_by_id.php')
-print(db)
+# scan_sql_injection(
+#     'http://www.webscantest.com/datastore/search_by_id.php')
+# print(db)
