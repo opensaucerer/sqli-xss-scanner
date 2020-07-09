@@ -111,7 +111,7 @@ def scan_sql_injection(url):
     for c in f"\'":
         # add quote/double quote character to the URL
         new_url = f'{url}{c}'
-        starting = f"[+] Error Based Injection Started"
+        starting = f"[+] SQL Injection Started"
         print(starting)
         logs.append(starting)
         # print("[!] Trying", new_url)
@@ -134,7 +134,7 @@ def scan_sql_injection(url):
     # test on HTML forms
     forms = get_all_forms(url)
     form_length = f"[+] Detected {len(forms)} forms on {url}"
-    form_try = '[+] Initiating Error Based Injection Through Detected Forms'
+    form_try = '[+] Initiating SQL Injection Through Detected Forms'
     print(form_length)
     print(form_try)
     logs.append(form_length)

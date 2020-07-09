@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, jsonify, request
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 import requests
 from detector import *
 from xssscanner import *

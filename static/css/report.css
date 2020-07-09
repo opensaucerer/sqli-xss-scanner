@@ -26,12 +26,28 @@ span {
 section {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
 
 }
 
+#home {
+    text-decoration: none;
+    color: mediumseagreen;
+    font-size: 1.3rem;
+    font-weight: 900;
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    outline: 2px solid mediumseagreen;
+    outline-offset: 3px;
 
+}
+
+.sql {
+    align-items: center;
+}
 
 h1 {
     text-align: center;
@@ -53,12 +69,12 @@ h3 {
 
 p {
     margin-left: 20px;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     padding-bottom: 5px;
     padding-top: 5px;
     color: black;
     font-size: 1rem;
-    max-width: 400px;
+    max-width: 300px;
     /* word-wrap: break-word; */
 
 }
@@ -92,7 +108,37 @@ p {
 
 .scan-logs,
 .payloads,
-.test-logs {
-    visibility: hidden;
+.test-logs,
+.recom,
+.recom1 {
+    /* visibility: hidden; */
+    display: none;
+}
 
+
+.rec,
+.rec1 {
+    display: none;
+
+}
+
+.active {
+    display: initial;
+}
+
+.recomp {
+    font-weight: 900;
+}
+
+.reco:hover,
+.reco1:hover {
+    color: rgba(13, 89, 231, 0.76);
+
+}
+
+.reco,
+.reco1 {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgba(0, 0, 255, 0.904);
 }
