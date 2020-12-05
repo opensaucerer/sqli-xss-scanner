@@ -1,10 +1,6 @@
 A Web Application Vulnerability Scanner
 
-
-
-it's a work in progresss. 
-
-
+Demo at https://pen-tester.herokuapp.com/
 
 Provided URL(s) should be of the following nature (containing endpoints)
 
