@@ -155,10 +155,10 @@ def xss_scanner(url):
     return print(log6)
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
     # url = "https://www.studiopiranha.com/stel-een-vraag/"
     # url = "http://testphp.vulnweb.com/listproducts.php?cat=1"
-# xss_scanner(
-#     "http://www.webscantest.com/datastore/search_get_by_name.php?name=Rake")
-# print(xss_detected, risk_level, scan_logs, xss_type, payloads_tried)
+    xss_scanner(
+        "http://www.webscantest.com/datastore/search_get_by_name.php?name=Rake")
+    print(xss_detected, risk_level, scan_logs, xss_type, payloads_tried)

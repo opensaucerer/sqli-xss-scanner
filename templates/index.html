@@ -9,28 +9,29 @@
   </head>
   <body>
     <section>
-      <nav>
-        Kris Pentest
-      </nav>
       <div class="title-con">
         <p class="title">Website Vulnerability Scanner</p>
         <p>Scan your Website for SQL Injection and Cross-Site Scripting</p>
       </div>
-      <div class="form-con">
-        <form method="POST" action="/report">
-          <div class="url-con">
-            <input
-              type="url"
-              name="url"
-              placeholder="Enter Website URL"
-              id="url"
-              required="required"
-            />
-          </div>
-          <div class="submit">
-            <input type="submit" id="submit" value="Scan" />
-          </div>
-        </form>
+      <div id="others">
+        <div class="form-con">
+          <form method="POST" action="/report">
+            <div id="form-con">
+              <div class="url-con">
+                <input
+                  type="url"
+                  name="url"
+                  placeholder="Enter Website URL"
+                  id="url"
+                  required="required"
+                />
+              </div>
+              <div class="submit">
+                <input type="submit" id="submit" value="Scan" />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </body>

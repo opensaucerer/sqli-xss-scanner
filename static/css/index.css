@@ -10,62 +10,49 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-nav {
+/* nav {
     position: absolute;
     top: 100px;
     left: 50px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 2rem;
     font-weight: 900;
-}
+} */
 
 section {
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: center;
-    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: 2rem;
 }
 
-.title-con {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-bottom: 20px;
 
+.title-con {
+ max-height: fit-content;
 }
 
 .title {
-
+    text-align: center;
     font-weight: 900;
     font-size: 2rem;
 }
 
-form {
+#form-con {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content:center;
+    padding-top: .5rem;
 }
-
-.url-con {
-    position: relative;
-
-}
-
-.url-con::before {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    /* content: "Enter Website URL"; */
-}
-
 
 
 
 #url {
     outline: none;
     border: none;
-    width: 500px;
+    /* width: 500px; */
     height: 50px;
     background-color: rgba(128, 128, 128, 0.24);
     padding: 20px;
@@ -74,7 +61,7 @@ form {
     font-family: cursive;
 
 }
-
+/* 
 label {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1rem;
@@ -83,11 +70,11 @@ label {
     left: 50%;
     transform: translateX(-50%);
 
-}
+} */
 
-.none {
+/* .none {
     display: none;
-}
+} */
 
 .submit {
     position: relative;
@@ -100,8 +87,9 @@ label {
     left: 0;
     width: 120px;
     height: 20px;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-top: 3px;
+    margin-left: 0.5rem;
+    /* margin-left: 10px; */
     background-color: rgba(219, 219, 219, 0);
     z-index: -1;
 
@@ -110,12 +98,13 @@ label {
 .submit::after {
     content: "";
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
-    width: 120px;
+    width: 100px;
     height: 20px;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-top: 3px;
+    margin-left: 0.5rem;
+    /* margin-left: 10px; */
     background-color: rgba(128, 128, 128, 0.966);
     z-index: -1;
 
@@ -126,10 +115,11 @@ label {
 
     border: none;
     outline: none;
-    margin-top: 5px;
-    margin-left: 10px;
+    margin-top: 3px;
+    margin-left: 0.5rem;
+    /* margin-left: 10px; */
     color: white;
     background-color: rgba(128, 128, 128, 0.699);
-    width: 120px;
+    width: 100px;
     height: 40px;
 }
