@@ -32,28 +32,40 @@ section {
 
 }
 
-#home {
-    text-decoration: none;
-    color: mediumseagreen;
-    font-size: 1.3rem;
-    font-weight: 900;
-    position: absolute;
-    top: 50px;
-    left: 100px;
-    outline: 2px solid mediumseagreen;
-    outline-offset: 3px;
 
-}
 
 .sql {
     align-items: center;
 }
 
+#header{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     margin-top: 2rem;
+}
+
+
+#home {
+    text-decoration: none;
+    color: mediumseagreen;
+    font-size: 1.3rem;
+    font-weight: 900;
+    /* position: absolute;
+    top: 50px;
+    left: 100px; */
+    outline: 2px solid mediumseagreen;
+    outline-offset: 3px;
+
+}
+
+
 h1 {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    /* margin-top: 40px;
+    margin-bottom: 20px; */
+     color: mediumseagreen;
 }
 
 h3 {
@@ -142,3 +154,4 @@ p {
     text-decoration: underline;
     color: rgba(0, 0, 255, 0.904);
 }
+
