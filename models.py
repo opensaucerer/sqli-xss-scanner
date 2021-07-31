@@ -85,4 +85,4 @@ class User:
     # fetch one scan data
     @staticmethod
     def fetch(id, user):
-        return mongo.db.scans.find({'author': user, '_id': id}).sort('dateCreated', -1)
+        return mongo.db.scans.find_one({'author': user, '_id': id})

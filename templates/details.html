@@ -69,21 +69,21 @@
       <div class="sql">
       <h3>SQL Injection Scan</h3>
 
-    {% for type in sqli_type %}
+    {% for type in detail.sql.sqliType %}
     <p class="label">Scan Type: <span>{{ type }}</span></p>
-    {% endfor %} {% for detected in sqli_detected %}
+    {% endfor %} {% for detected in detail.sql.isVul %}
     <p class="label">SQLi Detected: <span class="sqlid">{{ detected }}</span></p>
-    {% endfor %} {% for level in risk_state %}
+    {% endfor %} {% for level in detail.sql.riskLevel %}
     <p class="label">Risk Level: <span class="risk">{{ level }}</<span></p>
     {% endfor %}
-    {% for d in db %}
+    {% for d in detail.sql.databaseType %}
     <p class="label">Database Detected: <span>{{ d }}</<span></p>
     {% endfor %}
     <br />
 
 
     <p class="scan-details1">Scan Details</p>
-    {% for test_log in test_logs %}
+    {% for test_log in detail.sql.scanLogs %}
     <p class="test-logs">{{ test_log }}</p>
     {% endfor %}
     <br />
@@ -106,26 +106,26 @@
     <div class="xss">
 
        <h3>Cross-Site Scripting Scan</h3>
-    {% for type in xss_type %}
+    {% for type in detail.xss.xssType %}
     <p class="label">Scan Type: <span>{{ type }}</span></p>
-    {% endfor %} {% for detected in xss_detected %}
+    {% endfor %} {% for detected in detail.xss.isVul %}
     <p class="label">XSS Detected: <span class="xssd">{{ detected }}</span></p>
-    {% endfor %} {% for level in risk_level %}
+    {% endfor %} {% for level in detail.xss.riskLevel %}
     <p class="label">Risk Level: <span class="risk risky">{{ level }}</<span></p>
     {% endfor %}
-    {% for d in db %}
+    <!-- {% for d in db %}
     <p class="label"></<span></p>
-    {% endfor %}
+    {% endfor %} -->
     <br />
 
     <p class="scan-details">Scan Details</p>
-    {% for scan_log in scan_logs %}
+    {% for scan_log in detail.xss.scanLogs %}
     <p class="scan-logs">{{ scan_log }}</p>
     {% endfor %}
     <br />
 
     <p class="payloads-tried">Payloads Tried</p>
-    {% for payload in payloads_tried %}
+    {% for payload in detail.xss.payloadsTried %}
     <p class="payloads">{{ payload }}</p>
     {% endfor %}
     <br />

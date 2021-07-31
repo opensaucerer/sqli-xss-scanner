@@ -123,7 +123,7 @@ def u_report(user):
             "databaseType": db,
             "riskLevel": risk_state,
             "isVul": sqli_detected,
-            "slqiType": sqli_type,
+            "sqliType": sqli_type,
             "scanLogs": logs
         },
         'xss': {
@@ -165,5 +165,5 @@ def previous(user):
 @main.route('/previous/<string:id>')
 @login_required
 def details(user, id):
-    details = User.fetch(id, user['_id'])
-    return render_template('details.html', details=details)
+    detail = User.fetch(id, user['_id'])
+    return render_template('details.html', detail=detail)
