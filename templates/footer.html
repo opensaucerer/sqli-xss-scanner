@@ -1,0 +1,40 @@
+{% block footer %}
+
+<nav class="navbar navbar-fixed-bottom">
+  <!-- Navbar content with the dropup menu -->
+  <div class="navbar-content">
+    <div class="dropdown dropup with-arrow">
+      <button
+        class="btn btn-primary"
+        data-toggle="dropdown"
+        type="button"
+        id="navbar-fixed-bottom-dropdown-toggle"
+      >
+        Options
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+      </button>
+      <div
+        class="dropdown-menu"
+        aria-labelledby="navbar-fixed-bottom-dropdown-toggle"
+      >
+        <a href="./why.html" class="dropdown-item">EmmyhCoin 101</a>
+        <a href="./our-solutions.html" class="dropdown-item">Our Services</a>
+
+        <div class="dropdown-divider"></div>
+        <a target="_blank" class="dropdown-item">Support</a>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar brand -->
+  <a href="/" class="navbar-brand ml-auto">
+    Emm...Coin
+    <!-- <img src="..." alt="..." /> -->
+  </a>
+  <!-- Navbar text -->
+  <span style="color: #03dffc" class="navbar-text ml-auto">
+    <!-- ml-auto = margin-left: auto -->
+    &copy; 2021 EmmyhCoin
+  </span>
+</nav>
+
+{% endblock footer %}

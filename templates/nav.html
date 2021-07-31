@@ -1,0 +1,80 @@
+<nav class="navbar">
+  <div style="margin-left: 2rem">
+    <a style="color: #570563" href="/" class="navbar-brand ml-10 ml-sm-10">
+      Kris Pentest
+    </a>
+  </div>
+  <ul class="navbar-nav hidden-sm-and-down">
+    <li class="nav-item active">
+      <a href="/logout" class="nav-link">Sign Out</a>
+    </li>
+    <li class="nav-item">
+      <a href="/previous" class="nav-link">Previous Scans</a>
+    </li>
+    <li class="nav-item">
+      <a href="/schedule" class="nav-link">Scan Scheduler</a>
+    </li>
+
+    <!-- <li class="nav-item">
+      <a class="nav-link"> Support </a>
+    </li>
+
+    <li class="nav-item active">
+      <a href="./login.html" class="nav-link">Sign In</a>
+    </li> -->
+  </ul>
+  <!-- Changing nav item based on user session (show {logout} if user is {signed in}) end -->
+
+  <div class="navbar-content ml-auto">
+    <!-- Changing nav item based on user session (show {logout} if user is {signed in}) -->
+
+    <div style="margin-right: 4rem">
+      <a class="btn hidden-sm-and-down" role="button">
+        <i class="far fa-user mr-5"></i> {{ session['current_user']['fname'] }}
+      </a>
+    </div>
+
+    <!-- Changing nav item based on user session (show {logout} if user is {signed in}) end -->
+
+    <!-- Dropdown Menu -->
+
+    <div class="dropdown with-arrow hidden-md-and-up">
+      <!-- Adding user profile picture as menu icon is logged in -->
+
+      <a
+        data-toggle="dropdown"
+        id="navbar-dropdown-toggle-btn-1"
+        class="btn"
+        style="width: fit-content"
+      >
+        <i class="far fa-user mr-5"></i> {{ session['current_user']['fname'] }}
+      </a>
+
+      <!-- Adding user profile picture as menu icon is logged in end -->
+
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="navbar-dropdown-toggle-btn"
+      >
+        <!-- Changing nav item based on user session (show {logout} if user is {signed in}) -->
+        <!--  -->
+
+        <div class="dropdown-divider"></div>
+
+        <a href="/previous" class="nav-link dropdown-item">Previous Scans</a>
+        <a href="/schedule" class="nav-link dropdown-item">Scan Scheduler</a>
+
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-content">
+          <a href="/logout" class="btn btn-primary btn-block" role="button">
+            <span class="ml-5">Sign Out</span>
+          </a>
+        </div>
+
+        <!-- Changing nav item based on user session (show {logout} if user is {signed in}) end -->
+      </div>
+    </div>
+
+    <!-- Dropdown Menu End -->
+  </div>
+</nav>

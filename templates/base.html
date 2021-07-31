@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from abbrefy.xyz/auth/signin/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 12:28:04 GMT -->
+  <!-- Added by HTTrack --><meta
+    http-equiv="content-type"
+    content="text/html;charset=utf-8"
+  /><!-- /Added by HTTrack -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- block for meta data -->
+
+    <!-- block for meta data -->
+
+    <!-- This will be fired if javascript is disabled in the client's browser-->
+    <noscript>
+      <style type="text/css">
+        div#page-wrapper {
+          display: none !important;
+          visibility: hidden !important;
+        }
+      </style>
+
+      <div>
+        You currently have JavaScript disabled. This App requires JavaScript.<br />
+        Enable JavaScript in Your Browser to Continue Telling your Story!
+      </div>
+    </noscript>
+
+    <!-- Halfmoon CSS -->
+    <!-- <link
+      href="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.3/css/halfmoon.min.css"
+      rel="stylesheet"
+    /> -->
+    <link
+      href="../static/libraries/halfmoon/css/halfmoon.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="../static/css/layout.css" />
+
+    <!-- Custom JS -->
+
+    <script defer src="../static/js/layout.js"></script>
+
+    <!-- Font awesome -->
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+      crossorigin="anonymous"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="../static/libraries/fontawesome/css/all.min.css"
+    />
+
+    <!-- Roboto font (Used when Apple system fonts are not available) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon and Title -->
+    <link rel="icon" href="../static/image/favicon.png" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/about.css" />
+    <link rel="stylesheet" href="../static/css/signin.css" />
+    <link rel="stylesheet" href="../static/css/signup.css" />
+
+    {% block styles %} {% endblock styles %}
+
+    <!-- Custom JS -->
+    <script defer src="../static/js/about.js"></script>
+
+    <title>Kris Pentest | Web Vulnerability Scanner</title>
+  </head>
+
+  <body
+    class="with-custom-webkit-scrollbars with-custom-css-scrollbars"
+    data-sidebar-shortcut-enabled="true"
+    data-dm-shortcut-enabled="true"
+  >
+    <!-- Page wrapper start -->
+    <div
+      id="page-wrapper"
+      class="page-wrapper with-navbar with-navbar-fixed-bottom with-transitions"
+    >
+      <!-- rendering sticky alerts start -->
+      <div class="sticky-alerts">
+        <!-- Collecting flashed messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        <!-- checking if there are flashed messages -->
+        {% if messages %}
+        <!-- Looping thorugh the flashed messages -->
+        {% for category,message in messages %}
+
+        <!-- Rending the gotten message -->
+        <script>
+          window.onload = function () {
+            halfmoon.toastAlert('precompiled-alert-1', 10000);
+          };
+        </script>
+
+        <div
+          id="precompiled-alert-1"
+          class="alert alert-{{ category }} filled-lm"
+        >
+          <button
+            class="close"
+            data-dismiss="alert"
+            type="button"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="alert-heading">{{ message }}</h4>
+        </div>
+        <!-- Rending the gotten message end -->
+        {% endfor %}
+        <!-- Looping thorugh the flashed messages end -->
+        {% endif %}
+        <!-- checking if there are flashed messages end -->
+
+        {% endwith %}
+        <!-- Collecting flashed messages end -->
+      </div>
+      <!-- rendering sticky alerts end -->
+
+      <!-- Navbar start -->
+      <div class="container">{% block nav %} {% endblock nav %}</div>
+      <!-- Navbar end -->
+
+      <div class="content-wrapper">
+        <!-- Rending content to be overwritten -->
+
+        <div class="container">
+          {% block form %} {% endblock form %} {% block dash %} {% endblock dash
+          %} {% block previous %} {% endblock previous %}
+        </div>
+
+        <!-- Rending content to be overwritten end -->
+
+        <!-- page footer -->
+      </div>
+
+      <!-- Navbar fixed bottom (immediate child of the page wrapper) -->
+
+      {% block footer %} {% endblock footer %}
+    </div>
+
+    <!-- Halfmoon JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.3/js/halfmoon.min.js"></script> -->
+
+    <script src="../../static/libraries/halfmoon/js/halfmoon.min.js"></script>
+
+    {% block scripts %} {% endblock scripts %}
+  </body>
+
+  <!-- Mirrored from abbrefy.xyz/auth/signin/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jul 2021 12:28:08 GMT -->
+</html>

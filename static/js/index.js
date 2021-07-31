@@ -10,7 +10,7 @@ const input = document.querySelector('#url');
 form.onsubmit = async function () {
   //   body.innerHTML = loader;
   url = input.value;
-  console.log(url);
+
   section.style.display = 'none';
   body.innerHTML += loader;
 

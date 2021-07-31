@@ -6,7 +6,7 @@
 
 body {
     background-color: white;
-    color: black;
+    color: #570563;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -14,10 +14,10 @@ section {
     display: flex;
     flex-direction: column;
     height: 95vh;
-    justify-content: center;
+    justify-content:center;
     text-align: center;
     flex-wrap: wrap;
-    margin: 2rem;
+    /* margin: 0 auto; */
 }
 
 
@@ -42,14 +42,16 @@ section {
 
 #url {
     outline: none;
-    border: none;
+    border: 0.5px solid #5705637a;
     /* width: 500px; */
     height: 50px;
-    background-color: rgba(128, 128, 128, 0.24);
+    background-color: white;
     padding: 20px;
     color: black;
     font-size: 1em;
     font-family: cursive;
+    margin-right: 1rem;
+    /* margin-left: 1rem; */
 
 }
 
@@ -57,17 +59,19 @@ section {
     position: relative;
 }
 
+
+
 .submit::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 120px;
+    width: 100px;
     height: 20px;
     margin-top: 3px;
-    margin-left: 0.5rem;
+    margin-left: .5rem;
     /* margin-left: 10px; */
-    background-color: rgba(219, 219, 219, 0);
+    background-color: #560563a2;
     z-index: -1;
 
 }
@@ -80,25 +84,26 @@ section {
     width: 100px;
     height: 20px;
     margin-top: 3px;
-    margin-left: 0.5rem;
+    margin-left: .5rem;
     /* margin-left: 10px; */
-    background-color: rgba(128, 128, 128, 0.966);
+    background-color: #570563;
     z-index: -1;
 
 }
-
 
 #submit {
 
     border: none;
     outline: none;
     margin-top: 3px;
-    margin-left: 0.5rem;
+    margin-left: .5rem;
     /* margin-left: 10px; */
-    color: white;
+    color: black;
+    font-weight: bolder;
     background-color: rgba(128, 128, 128, 0.699);
     width: 100px;
     height: 40px;
+    text-transform: uppercase;
     cursor: pointer;
 }
 
@@ -112,4 +117,37 @@ section {
     z-index: 99;
     opacity:0.9;
     background: rgb(241, 233, 218) url('../img/loading.gif') center center no-repeat;
+}
+
+
+
+.btn_1{
+border-radius: 7px;
+border: 0.5px solid #570563;
+background-color: #57056381;
+color: black;
+width: 5rem;
+text-decoration: none;
+margin-right: 5rem;
+height: 1.4rem;
+}
+
+.btn_2{
+border-radius: 7px;
+border: 0.5px solid #570563;
+background-color: #57056381;
+color: black;
+width: 5rem;
+text-decoration: none;
+margin-left: 5rem;
+height: 1.4rem;
+}
+
+.flex_con{
+ 
+   display: flex;
+   justify-content: space-between;
+   /* max-width: 20rem; */
+   align-items: center;
+   margin: 1rem auto 1rem auto;
 }

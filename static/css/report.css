@@ -8,7 +8,7 @@
 
 body {
     color: black;
-    background-color: rgba(128, 128, 128, 0.342);
+    background-color: white;
     font-family: 'Ubuntu',
         sans-serif;
     margin-bottom: 20px;
@@ -48,13 +48,13 @@ section {
 
 #home {
     text-decoration: none;
-    color: mediumseagreen;
+    color: #570563;
     font-size: 1.3rem;
     font-weight: 900;
     /* position: absolute;
     top: 50px;
     left: 100px; */
-    outline: 2px solid mediumseagreen;
+    outline: 2px solid #570563;
     outline-offset: 3px;
 
 }
@@ -65,7 +65,7 @@ h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     /* margin-top: 40px;
     margin-bottom: 20px; */
-     color: mediumseagreen;
+     color: #570563;
 }
 
 h3 {
@@ -75,7 +75,7 @@ h3 {
     margin-left: 20px;
     text-decoration: underline;
     -webkit-text-stroke: 1px;
-    color: black;
+    color: #570563;
     -webkit-text-fill-color: rgba(128, 128, 128, 0.342);
 }
 
