@@ -7,6 +7,12 @@ from xssscanner import *
 main = Blueprint('main', __name__)
 
 
+# 404 page
+def page_not_found(e):
+    # note that we set the 404 status explicitly
+    return render_template('404.html'), 404
+
+
 @main.route("/", methods=["GET"])
 @no_login_required
 def home():

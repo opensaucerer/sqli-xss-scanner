@@ -27,15 +27,8 @@ def create_app(config_class=Config):
     cors.init_app(app)
     Mail.init_app(app)
 
-    from routes import main
+    from routes import main, page_not_found
     app.register_blueprint(main)
-    # from abbrefy.users.routes import users
-    # from abbrefy.links.routes import links
-    # from abbrefy.links.links_api import linksApi
-    # from abbrefy.users.users_api import usersApi
-    # app.register_blueprint(users)
-    # app.register_blueprint(links)
-    # app.register_blueprint(linksApi)
-    # app.register_blueprint(usersApi)
+    app.register_error_handler(404, page_not_found)
 
     return app
