@@ -3,3 +3,6 @@ __pycache__
 venv
 front
 .env
+test.py
+p.py
+new.py

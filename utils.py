@@ -5,11 +5,9 @@ from models import User
 from flask_mail import Message
 from threading import Thread
 from __init__ import Mail
-from time import time
+
 
 # login in required decorator
-
-
 def login_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):

@@ -13,6 +13,19 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
+
+
+# demo route
+@main.route('/test')
+def test():
+    result = q.enqueue(count_words_at_url, 'http://heroku.com')
+    return f"WORKING NOW"
+
+
 @main.route("/", methods=["GET"])
 @no_login_required
 def home():
