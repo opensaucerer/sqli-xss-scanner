@@ -1,2 +1,1 @@
-worker: python worker.py
-clock: python clock.py
+scheduler: python scheduler.py
