@@ -21,12 +21,12 @@ def check(data):
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
-        elif time >= 12 and time < 13:
+        elif time >= 12 and time < 14:
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
     else:
-        if time >= 12 and time < 13:
+        if time >= 12 and time < 14:
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
