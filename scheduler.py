@@ -15,7 +15,7 @@ def get_all_scan():
 
 
 def check(data):
-    time = datetime.datetime.utcnow().time().hour
+    time = datetime.datetime.now().time().hour
     if data['freq'] == 'twice':
         if time >= 0 and time < 3:
             res = requests.get(
@@ -37,7 +37,7 @@ def scan_d(data):
 
 
 def scan_w(data):
-    day = datetime.datetime.utcnow().date().weekday()
+    day = datetime.datetime.now().date().weekday()
     if day == 5:
         check(data)
     return True
