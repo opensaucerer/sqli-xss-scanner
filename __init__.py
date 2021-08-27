@@ -13,7 +13,7 @@ mongo = PyMongo()
 bcrypt = Bcrypt()
 
 # instantiating mail for sending emails
-Mail = Mail()
+mail = Mail()
 
 # setting up CORS
 cors = CORS()
@@ -25,7 +25,7 @@ def create_app(config_class=Config):
     mongo.init_app(app)
     bcrypt.init_app(app)
     cors.init_app(app)
-    Mail.init_app(app)
+    mail.init_app(app)
 
     from routes import main, page_not_found
     app.register_blueprint(main)

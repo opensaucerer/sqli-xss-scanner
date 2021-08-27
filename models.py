@@ -86,3 +86,8 @@ class User:
     @staticmethod
     def fetch(id, user):
         return mongo.db.scans.find_one({'author': user, '_id': id})
+
+    # save a new schedule
+    @staticmethod
+    def schedule(data):
+        return mongo.db.schedule.insert_one(data)

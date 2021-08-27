@@ -4,6 +4,7 @@
     <tr>
       <th class="text-center">Date</th>
       <th class="text-center">URL</th>
+      <th class="text-center">Scan Type</th>
       <th class="text-right">Action</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
         {{scan.dateCreated.strftime('%b %d, %Y, %I:%M %p')}}
       </th>
       <td class="text-center">{{scan.url}}</td>
+      <td class="text-center">{{scan.type if scan.type else 'Manual'}}</td>
       <td class="text-right">
         <a class="btn btn-primary" href="/previous/{{scan._id}}"
           >View Details</a
@@ -38,7 +40,7 @@
     </li>
 
     <li class="nav-item">
-      <a href="/schedule" class="nav-link">Scan Scheduler</a>
+      <a href="/schedule#modal-1" class="nav-link">Scan Scheduler</a>
     </li>
 
     <!-- <li class="nav-item">
@@ -87,7 +89,9 @@
 
         <div class="dropdown-divider"></div>
 
-        <a href="/schedule" class="nav-link dropdown-item">Scan Scheduler</a>
+        <a href="/schedule#modal-1" class="nav-link dropdown-item"
+          >Scan Scheduler</a
+        >
 
         <div class="dropdown-divider"></div>
         <div class="dropdown-content">

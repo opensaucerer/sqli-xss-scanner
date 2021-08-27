@@ -3,6 +3,8 @@ from utils import *
 from models import User
 from detector import *
 from xssscanner import *
+from __init__ import mail
+from flask_mail import Message
 
 main = Blueprint('main', __name__)
 
@@ -17,13 +19,6 @@ from rq import Queue
 from worker import conn
 
 q = Queue(connection=conn)
-
-
-# demo route
-@main.route('/test')
-def test():
-    result = q.enqueue(count_words_at_url, 'http://heroku.com')
-    return f"WORKING NOW"
 
 
 @main.route("/", methods=["GET"])
@@ -56,7 +51,11 @@ def signin():
 
     form = request.form
 
-    User().signin(form)
+    user = User().signin(form)
+
+    if user == False:
+        flash('Invalid Sign In Credentials', 'danger')
+        return redirect(url_for('main.signin'))
 
     return redirect(url_for('main.dashboard'))
 
@@ -137,6 +136,7 @@ def u_report(user):
 
     # compiling the scan data
     data = {
+        'type': 'Manual',
         'url': url,
         'sql': {
             "databaseType": db,
@@ -170,9 +170,66 @@ def u_report(user):
 
     return render_template("u_report.html", test_logs=logs, db=db, sqli_detected=sqli_detected, risk_state=risk_state, sqli_type=sqli_type, scan_logs=scan_logs, xss_type=xss_type, risk_level=risk_level, xss_detected=xss_detected, payloads_tried=payloads_tried), clear(clear_list), clear2(clear_list2)
 
+
+# scan and save without login
+# scan report endpoint for logged in user
+@main.route('/w_report', methods=['GET'])
+def w_report():
+
+    url = request.args.get('url')
+    user = request.args.get('id')
+    email = request.args.get('email')
+
+    inject = scan_sql_injection(url)
+    xss_scanner(url)
+
+    if inject:
+        flash(inject, 'danger')
+        return redirect(url_for('main.dashboard'))
+
+    # compiling the scan data
+    data = {
+        'type': 'Scheduled/Automatic',
+        'url': url,
+        'sql': {
+            "databaseType": db,
+            "riskLevel": risk_state,
+            "isVul": sqli_detected,
+            "sqliType": sqli_type,
+            "scanLogs": logs
+        },
+        'xss': {
+            "xssType": xss_type,
+            "isVul": xss_detected,
+            "payloadsTried": payloads_tried,
+            "riskLevel": risk_level,
+            "scanLogs": scan_logs
+        }
+    }
+    # saving the scan data
+    save = User.save(user, data)
+
+    new_mail = Message('Web Scan Successful',
+                       sender='Kris Pentest', recipients=[email])
+    new_mail.body = f'Your schedule scan for website {url} was successful. Please log on to your account here ({request.host}) for full information on the status of the scan.'
+
+    mail.send(new_mail)
+
+    clear_list = [xss_detected, scan_logs, risk_level, payloads_tried]
+    clear_list2 = [db, sqli_detected, risk_state, logs]
+
+    def clear(list):
+        for x in list:
+            x.clear()
+
+    def clear2(list):
+        for x in list:
+            x.clear()
+
+    return True, clear(clear_list), clear2(clear_list2)
+
+
 # previous scans
-
-
 @main.route('/previous')
 @login_required
 def previous(user):
@@ -186,3 +243,23 @@ def previous(user):
 def details(user, id):
     detail = User.fetch(id, user['_id'])
     return render_template('details.html', detail=detail)
+
+
+# scan scheduler
+@main.route('/schedule', methods=['GET', 'POST'])
+@login_required
+def schedule(user):
+
+    if request.method == 'POST':
+        form = request.form
+        data = {
+            "owner": user['_id'],
+            "email": user['email'],
+            "url": form['url'],
+            "freq": form['freq'],
+            "latency": form['latency'].lower()
+        }
+
+        status = User.schedule(data)
+        return redirect(url_for('main.dashboard'))
+    return render_template('schedule.html', user=user)
