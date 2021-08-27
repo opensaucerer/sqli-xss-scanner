@@ -17,16 +17,16 @@ def get_all_scan():
 def check(data):
     time = datetime.datetime.utcnow().time().hour
     if data['freq'] == 'twice':
-        if time >= 24 and time < 2:
+        if time >= 0 and time < 3:
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
-        elif time >= 12 and time < 14:
+        elif time >= 12 and time < 13:
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
     else:
-        if time >= 12 and time < 14:
+        if time >= 12 and time < 13:
             res = requests.get(
                 f'http://localhost:5000/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
