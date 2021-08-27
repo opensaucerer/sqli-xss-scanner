@@ -17,7 +17,7 @@ def get_all_scan():
 def check(data):
     time = datetime.datetime.now().time().hour
     if data['freq'] == 'twice':
-        if time >= 0 and time < 3:
+        if time >= 0 and time < 1:
             res = requests.get(
                 f'https://pen-tester.herokuapp.com/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
 
