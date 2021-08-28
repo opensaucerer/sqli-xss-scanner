@@ -11,24 +11,25 @@ db = client.pentest
 
 def get_all_scan():
     response = db.schedule.find()
+
     return response
 
 
 def check(data):
     time = datetime.datetime.now().time().hour
     if data['freq'] == 'twice':
-        if time >= 0 and time < 1:
+        if time >= 0 and time < 9:
             res = requests.get(
-                f'https://pen-tester.herokuapp.com/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
+                f'https://pen-tester.herokuapp.com/w_report?id={data["owner"]}&url={data["url"]}&email={data["email"]}')
 
         elif time >= 12 and time < 13:
             res = requests.get(
-                f'https://pen-tester.herokuapp.com/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
+                f'https://pen-tester.herokuapp.com/w_report?id={data["owner"]}&url={data["url"]}&email={data["email"]}')
 
     else:
         if time >= 12 and time < 13:
             res = requests.get(
-                f'https://pen-tester.herokuapp.com/w_report?id={data["_id"]}&url={data["url"]}&email={data["email"]}')
+                f'https://pen-tester.herokuapp.com/w_report?id={data["owner"]}&url={data["url"]}&email={data["email"]}')
 
 
 def scan_d(data):
