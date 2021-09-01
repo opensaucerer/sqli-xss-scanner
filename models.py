@@ -90,4 +90,15 @@ class User:
     # save a new schedule
     @staticmethod
     def schedule(data):
+        data['_id'] = uuid4().hex
         return mongo.db.schedule.insert_one(data)
+
+    # getting the schedules
+    @staticmethod
+    def get_schedules(id):
+        return mongo.db.schedule.find({'owner': id})
+
+    # getting the schedules
+    @staticmethod
+    def unschedule(id):
+        return mongo.db.schedule.delete_one({'_id': id})

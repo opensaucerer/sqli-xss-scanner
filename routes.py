@@ -250,6 +250,8 @@ def details(user, id):
 @login_required
 def schedule(user):
 
+    schedules = User.get_schedules(user['_id'])
+
     if request.method == 'POST':
         form = request.form
         data = {
@@ -262,4 +264,16 @@ def schedule(user):
 
         status = User.schedule(data)
         return redirect(url_for('main.dashboard'))
-    return render_template('schedule.html', user=user)
+    return render_template('schedule.html', user=user, schedules=schedules)
+
+
+# scan scheduler
+@main.route('/unschedule', methods=['GET', 'POST'])
+@login_required
+def unschedule(user):
+
+    id = request.args.get('id')
+
+    status = User.unschedule(id)
+
+    return redirect(url_for('main.schedule'))

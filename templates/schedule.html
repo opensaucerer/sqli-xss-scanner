@@ -2,85 +2,125 @@
 
 <div class="container">
   <div class="content-section">
-    <!-- Rendering Sign In Form  -->
-    <form action="/schedule" method="POST" class="form-signin">
-      <fieldset class="form-group">
-        <!-- Input -->
-        <div class="form-group">
-          <label for="full-name" class="required">Enter URL to Scan</label>
-          <input
-            type="url"
-            class="form-control"
-            id="full-name"
-            name="url"
-            placeholder="Enter the URL you want to schedule a scan for"
-            required="required"
-          />
-        </div>
+    <div class="d-flex justify-content-around">
+      {% if schedules.count() < 2 %}
 
-        <!-- Radio -->
-        <div class="form-group">
-          <label for="gender-male" class="required">Select Scan Latency</label>
-          <div class="custom-radio">
-            <input
-              type="radio"
-              name="latency"
-              id="gender-male"
-              value="daily"
-              required="required"
-            />
-            <label for="gender-male">Daily</label>
-          </div>
-          <div class="custom-radio">
-            <input
-              type="radio"
-              name="latency"
-              id="gender-female"
-              value="weekly"
-              required="required"
-            />
-            <label for="gender-female">Weekly (Every Saturday)</label>
-          </div>
-        </div>
+      <div>
+        <form action="/schedule" method="POST" class="form-signin">
+          <fieldset class="form-group">
+            <!-- Input -->
+            <div class="form-group">
+              <label for="full-name" class="required">Enter URL to Scan</label>
+              <input
+                type="url"
+                class="form-control"
+                id="full-name"
+                name="url"
+                placeholder="Enter the URL you want to schedule a scan for"
+                required="required"
+              />
+            </div>
 
-        <!-- Select -->
-        <div class="form-group">
-          <label for="area-of-specialization" class="required"
-            >Select Scan Frequency</label
-          >
-          <select class="form-control" name="freq" id="freq">
-            <option value="once">Once</option>
-            <option value="twice">Twice</option>
-          </select>
-        </div>
+            <!-- Radio -->
+            <div class="form-group">
+              <label for="gender-male" class="required"
+                >Select Scan Latency</label
+              >
+              <div class="custom-radio">
+                <input
+                  type="radio"
+                  name="latency"
+                  id="gender-male"
+                  value="daily"
+                  required="required"
+                />
+                <label for="gender-male">Daily</label>
+              </div>
+              <div class="custom-radio">
+                <input
+                  type="radio"
+                  name="latency"
+                  id="gender-female"
+                  value="weekly"
+                  required="required"
+                />
+                <label for="gender-female">Weekly (Every Saturday)</label>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <input
-            class="btn btn-md btn-primary btn-block"
-            id="submit"
-            type="submit"
-            value="Schedule"
-          />
-        </div>
-        <!-- <p class="text-muted text-center">
+            <!-- Select -->
+            <div class="form-group">
+              <label for="area-of-specialization" class="required"
+                >Select Scan Frequency</label
+              >
+              <select class="form-control" name="freq" id="freq">
+                <option value="once">Once</option>
+                <option value="twice">Twice</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <input
+                class="btn btn-md btn-primary btn-block"
+                id="submit"
+                type="submit"
+                value="Schedule"
+              />
+            </div>
+            <!-- <p class="text-muted text-center">
                   <a href="./forgot.html">Forgot Password?</a>
                 </p> -->
 
-        <!-- Redirecting to Sign Up page for new users -->
-        <!-- <div class="form-group">
+            <!-- Redirecting to Sign Up page for new users -->
+            <!-- <div class="form-group">
           <p class="text-muted text-center">
             Don't Have an Account?
             <a href="./register">Sign Up Here</a>
           </p>
         </div> -->
-        <!-- Redirecting to Sign In page for exsiting users end-->
-      </fieldset>
-    </form>
+            <!-- Redirecting to Sign In page for exsiting users end-->
+          </fieldset>
+        </form>
+      </div>
 
-    <!-- Required for the custom file input -->
-    <script src="path/to/halfmoon.js"></script>
-
-    <!-- Rendering Sign In Form End -->
+      {% endif%} {% for s in schedules %}
+      <div>
+        <div class="form-group">
+          <label for="full-name">URL</label>
+          <input
+            disabled
+            type="url"
+            class="form-control"
+            id="full-name"
+            value="{{s.url}}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="full-name">Frequency</label>
+          <input
+            disabled
+            type="text"
+            class="form-control"
+            id="full-name"
+            value="{{s.freq}}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="full-name">Latency</label>
+          <input
+            disabled
+            type="latency"
+            class="form-control"
+            id="full-name"
+            value="{{s.latency}}"
+          />
+        </div>
+        <a class="btn btn-primary btn-md" href="/unschedule?id={{s._id}}"
+          >Unschedule</a
+        >
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
